@@ -30,7 +30,6 @@ markdown: kramdown
 theme: minima
 plugins:
   - jekyll-feed
-  - jekyll-assets
 
 # Exclude from processing.
 # The following items will not be processed, by default. Create a custom list
@@ -44,15 +43,3 @@ plugins:
 #   - vendor/gems/
 #   - vendor/ruby/
 
-##############################################################################
-first_slide_caption: Robotics & <br/>Machine Learning Labs
-first_slide_text: Sample text
-first_slide_link: ""
-
-second_slide_caption: second Caption
-second_slide_text: second text
-second_slide_link: second/link
-
-third_slide_caption: third Caption
-third_slide_text: third text
-third_slide_link: third/link
