@@ -1,0 +1,47 @@
+vi:
+  top:
+    tech: Công nghệ
+    tutorial: Kiến thức
+    contact: Liên hệ
+  nextLang:
+    text: English
+    code: en
+  slides:
+    first:
+      title: Robotics & <br/>Machine Learning Labs
+      content: Hiện thực ý tưởng của bạn<br/>bằng các giải pháp công nghệ hàng đầu
+      path: ''
+    second:
+      title: SoC
+      content: >-
+        Chúng tôi thiết kế và phát triển  các hệ thống nhúng, IoT, computer
+        vision và trí thông minh nhân dựa trên nền tảng vững chắc về FPGA, MCUs
+        cùng khả năng lập trình trên nhiều nền tảng hệ điều hành khác nhau
+      path: ''
+    third:
+      title: Xe tự hành
+      content: ''
+      path: ''
+  newPost: Bài mới đăng
+en:
+  top:
+    tech: Technology
+    tutorial: Tutorial
+    contact: Contact
+  nextLang:
+    text: Tiếng Việt
+    code: vi
+  slides:
+    first:
+      title: ''
+      content: ''
+      path: ''
+    second:
+      title: ''
+      content: ''
+      path: ''
+    third:
+      title: ''
+      content: ''
+      path: ''
+  newPost: Last posts

@@ -1,0 +1,248 @@
+---
+layout: "top"
+---
+
+<html>
+    <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+    * {box-sizing: border-box}
+    .mySlides {display: none}
+    img {vertical-align: middle;}
+    
+    /* Slideshow container */
+    .slideshow-container {
+        position: relative;
+        margin: auto;
+    }
+    
+    /* Next & previous buttons */
+    .prev, .next {
+        cursor: pointer;
+        position: absolute;
+        top: 50%;
+        width: auto;
+        padding: 16px;
+        margin-top: -22px;
+        color: black;
+        font-weight: bold;
+        font-size: 18px;
+        transition: 0.6s ease;
+        border-radius: 0 3px 3px 0;
+    }
+    
+    /* Position the "next button" to the right */
+    .next {
+        right: 0;
+        border-radius: 3px 0 0 3px;
+    }
+    
+    /* On hover, add a black background color with a little bit see-through */
+    .prev:hover, .next:hover {
+        background-color: rgba(97, 97, 97, 0.356);
+    }
+
+    .text {
+        color: #2e2d2d;
+        font-size: 32px;
+        padding: 8px 64px;
+        position: absolute;
+        top: 45%;
+        width: 60%;
+        left: 35%;
+        text-align: left;
+    }
+
+    .text_head {
+        color: #2e2d2d;
+        font-size: 48px;
+        padding: 8px 64px;
+        position: absolute;
+        bottom: 60%;
+        width: 60%;
+        left: 35%;
+        text-align: left;
+    }
+
+    /* The dots/bullets/indicators */
+    .dot {
+        cursor: pointer;
+        height: 15px;
+        width: 15px;
+        margin: 0 2px;
+        background-color: rgb(179, 175, 175);
+        border-radius: 50%;
+        display: inline-block;
+        transition: background-color 0.6s ease;
+    }
+
+    .group {
+        background-color: #f1f1f1;
+        padding: 0.01em 16px;
+        margin: 20px 0;
+        box-shadow: 0 2px 4px 0 rgba(0,0,0,0.16),0 2px 10px 0 rgba(0,0,0,0.12)!important;
+    }
+    
+    .active, .dot:hover {
+        background-color: #111111;
+    }
+    
+    /* Fading animation */
+    .fade {
+        -webkit-animation-name: fade;
+        -webkit-animation-duration: 1.5s;
+        animation-name: fade;
+        animation-duration: 1.5s;
+    }
+    
+    @-webkit-keyframes fade {
+        from {opacity: .4} 
+        to {opacity: 1}
+    }
+    
+    @keyframes fade {
+        from {opacity: .4} 
+        to {opacity: 1}
+    }
+    
+    /* On smaller screens, decrease text size */
+    @media only screen and (max-width: 300px) {
+        .prev, .next,.text {font-size: 11px}
+    }
+
+    li {
+        display: block;
+        margin: 0 60px;
+    }
+    </style>
+    </head>
+
+    <body>
+        <div class="slideshow-container">
+            {% if page.lang == 'vi' %}
+                <div class="mySlides fade">
+                    <a href="{{ site.url }}/{{site.data.lang[page.lang].slides.first.path}}">
+                        <img src="{% asset vi.robot.jpg @path %}" style="width:100%">
+                    </a>
+                </div>
+                
+                <div class="mySlides fade">
+                    <a href="{{ site.url }}/{{site.data.lang[page.lang].slides.second.path}}">
+                        <img src="{% asset vi.brain.jpg @path %}" style="width:100%">
+                    </a>
+                </div>
+                
+                <div class="mySlides fade">
+                    <a href="{{ site.url }}/{{site.data.lang[page.lang].slides.third.path}}">
+                        <img src="{% asset vi.car.jpg @path %}" style="width:100%">
+                    </a>
+                </div>
+            {% else %}
+                <div class="mySlides fade">
+                    <a href="{{ site.url }}/{{site.data.lang[page.lang].slides.first.path}}">
+                        <img src="{% asset en.robot.jpg @path %}" style="width:100%">
+                    </a>
+                </div>
+                
+                <div class="mySlides fade">
+                    <a href="{{ site.url }}/{{site.data.lang[page.lang].slides.second.path}}">
+                        <img src="{% asset en.brain.jpg @path %}" style="width:100%">
+                    </a>
+                </div>
+                
+                <div class="mySlides fade">
+                    <a href="{{ site.url }}/{{site.data.lang[page.lang].slides.third.path}}">
+                        <img src="{% asset en.car.jpg @path %}" style="width:100%">
+                    </a>
+                </div>
+            {% endif %}
+            
+            <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+            <a class="next" onclick="plusSlides(1)">&#10095;</a>
+        
+        </div>
+        <br>
+        
+        <div style="text-align:center">
+            <span class="dot" onclick="currentSlide(1)"></span> 
+            <span class="dot" onclick="currentSlide(2)"></span> 
+            <span class="dot" onclick="currentSlide(3)"></span> 
+        </div>
+
+        <div class="group">
+            <h3>{{site.data.lang[page.lang].newPost}}</h3>
+            <br>
+            <table style="width:100%;text-align: left">
+                <tr>
+                    {% for post in site.categories.blogs limit:3 %} 
+                    <th>
+                        <div>
+                            <a href="{{ post.url }}">
+                                {% assign foundImage = 0 %}
+                                {% assign images = post.content | split:"<img " %}
+                                {% for image in images %}
+                                    {% if image contains 'src' %}
+                                        {% if foundImage == 0 %}
+                                            {% assign html = image | split:"/>" | first %}
+                                            <img style="float:left;margin-right:16px;margin-left:16px;width:256px;height:128px" {{ html }} />
+                                            {% assign foundImage = 1 %}
+                                        {% endif %}
+                                    {% endif %}
+                                {% endfor %}
+        
+                                {% if foundImage == 0 %}
+                                    <img src="{% asset no_image.jpg @path %}" style="float:left;margin-left:16px;margin-right:16px;width:256px;height:128px">
+                                {% endif %}
+                            </a>
+                            <a href="{{ post.url }}" class="post_link">
+                                <h3>{{ post.title }}</h3>
+                            </a>
+                            <h5><font size="2" color="black">{{ post.desc }}</font></h5>
+                        </div>
+                    </th>
+                    {% endfor %}
+                </tr>
+            </table>
+        </div>
+    <script>
+        var firse_time = true;
+        var slideIndex = 1;
+        var timeout_var;
+        showSlides(slideIndex);
+        showSlicesAuto();
+        
+        function plusSlides(n) {
+            n = firse_time ? 0 : n;
+            firse_time = false;
+            showSlides(slideIndex += n);
+        }
+        
+        function currentSlide(n) {
+            showSlides(slideIndex = n);
+        }
+        
+        function showSlides(n) {
+            var i;
+            var slides = document.getElementsByClassName("mySlides");
+            var dots = document.getElementsByClassName("dot");
+            if (n > slides.length) {slideIndex = 1}    
+            if (n < 1) {slideIndex = slides.length}
+            for (i = 0; i < slides.length; i++) {
+                slides[i].style.display = "none";  
+            }
+            for (i = 0; i < dots.length; i++) {
+                dots[i].className = dots[i].className.replace(" active", "");
+            }
+            slides[slideIndex-1].style.display = "block";  
+            dots[slideIndex-1].className += " active";
+            clearTimeout(timeout_var);
+        }
+
+        function showSlicesAuto(){
+            showSlides(slideIndex);
+            slideIndex += 1;
+            timeout_var = setTimeout(showSlicesAuto, 8888);
+        }
+        </script>            
+    </body>
+</html>

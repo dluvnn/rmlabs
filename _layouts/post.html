@@ -1,0 +1,57 @@
+---
+layout: "top"
+---
+<html>
+    <head>
+        <style>
+            th { 
+                font-weight: normal; 
+                /* height: 100%; */
+                text-align: left;
+                vertical-align: top;
+            }
+        </style>
+    </head>
+    <body>
+        <font size="4" face="Courier New" >
+        <table width="100%">
+            <col width="250">
+            <tr>
+                <th>
+                    <h4 class="w3-bar-item"><b>Robotics</b></h4>
+                    {% for post in site.categories.blogs %}
+                        {% if post.group == 'rb' and post.lang == page.lang %}
+                            <a id = "{{ post.id }}" href="{{ post.url }}" class="w3-bar-item w3-button">{{ post.title }}</a>
+                        {% endif %}
+                    {% endfor %}
+
+                    <h4 class="w3-bar-item"><b>Machine Learning</b></h4>
+                    {% for post in site.categories.blogs %}
+                        {% if post.group == 'ml' and post.lang == page.lang %}
+                            <a id = "{{ post.id }}" href="{{ post.url }}" class="w3-bar-item w3-button">{{ post.title }}</a>
+                        {% endif %}
+                    {% endfor %}
+
+                    <h4 class="w3-bar-item"><b>IoT</b></h4>
+                    {% for post in site.categories.blogs %}
+                        {% if post.group == 'iot' and post.lang == page.lang %}
+                            <a id = "{{ post.id }}" href="{{ post.url }}" class="w3-bar-item w3-button">{{ post.title }}</a>
+                        {% endif %}
+                    {% endfor %}
+                </th>
+                <th>
+                    {{content}}
+                </th>
+            </tr>
+        </table>
+    </font>
+    </body>
+
+    <script>
+        document.getElementById("id_tutorial").style.backgroundColor  = "#AAAAAA";
+        document.getElementById("{{ page.id }}").style.color = "blue";
+    </script>
+
+</html>
+
+      

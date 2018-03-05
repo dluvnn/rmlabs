@@ -1,5 +1,5 @@
 ---
 layout: home
-lang: vi
+lang: en
 ---
 
