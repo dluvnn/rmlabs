@@ -119,44 +119,23 @@ layout: "top"
 
     <body>
         <div class="slideshow-container">
-            {% if page.lang == 'vi' %}
-                <div class="mySlides fade">
-                    <a href="{{ site.url }}/{{site.data.lang[page.lang].slides.first.path}}">
-                        <img src="{% asset vi.robot.jpg @path %}" style="width:100%">
-                    </a>
-                </div>
-                
-                <div class="mySlides fade">
-                    <a href="{{ site.url }}/{{site.data.lang[page.lang].slides.second.path}}">
-                        <img src="{% asset vi.brain.jpg @path %}" style="width:100%">
-                    </a>
-                </div>
-                
-                <div class="mySlides fade">
-                    <a href="{{ site.url }}/{{site.data.lang[page.lang].slides.third.path}}">
-                        <img src="{% asset vi.car.jpg @path %}" style="width:100%">
-                    </a>
-                </div>
-            {% else %}
-                <div class="mySlides fade">
-                    <a href="{{ site.url }}/{{site.data.lang[page.lang].slides.first.path}}">
-                        <img src="{% asset en.robot.jpg @path %}" style="width:100%">
-                    </a>
-                </div>
-                
-                <div class="mySlides fade">
-                    <a href="{{ site.url }}/{{site.data.lang[page.lang].slides.second.path}}">
-                        <img src="{% asset en.brain.jpg @path %}" style="width:100%">
-                    </a>
-                </div>
-                
-                <div class="mySlides fade">
-                    <a href="{{ site.url }}/{{site.data.lang[page.lang].slides.third.path}}">
-                        <img src="{% asset en.car.jpg @path %}" style="width:100%">
-                    </a>
-                </div>
-            {% endif %}
+            <div class="mySlides fade">
+                <a href="{{ site.url }}/{{site.data.lang[page.lang].slides.first.path}}">
+                    <img src="{{site.url}}/assets/images/{{page.lang}}.robot.jpg" style="width:100%">
+                </a>
+            </div>
             
+            <div class="mySlides fade">
+                <a href="{{ site.url }}/{{site.data.lang[page.lang].slides.second.path}}">
+                    <img src="{{site.url}}/assets/images/{{page.lang}}.brain.jpg" style="width:100%">
+                </a>
+            </div>
+            
+            <div class="mySlides fade">
+                <a href="{{ site.url }}/{{site.data.lang[page.lang].slides.third.path}}">
+                    <img src="{{site.url}}/assets/images/{{page.lang}}.car.jpg" style="width:100%">
+                </a>
+            </div>            
             <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
             <a class="next" onclick="plusSlides(1)">&#10095;</a>
         
@@ -191,7 +170,7 @@ layout: "top"
                                 {% endfor %}
         
                                 {% if foundImage == 0 %}
-                                    <img src="{% asset no_image.jpg @path %}" style="float:left;margin-left:16px;margin-right:16px;width:256px;height:128px">
+                                    <img src="{{site.url}}/assets/images/no_image.jpg" style="float:left;margin-left:16px;margin-right:16px;width:256px;height:128px">
                                 {% endif %}
                             </a>
                             <a href="{{ post.url }}" class="post_link">
